@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ENVE Fuel — Performance Nutrition</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0a0a0b;--s:#121214;--fg:#f4f4f5;--m:#a1a1aa;--b:#26262c;--r:#c41230}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:DM Sans,system-ui,sans-serif}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.d{font-family:Barlow Condensed,sans-serif;text-transform:uppercase;letter-spacing:-.02em}
+.w{max-width:72rem;margin:0 auto;padding:0 1.25rem}
+header{position:sticky;top:0;z-index:20;background:rgba(10,10,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--b)}
+.nav{height:4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo{height:1.75rem}
+.btn{height:2.75rem;padding:0 1.1rem;border-radius:.25rem;font-weight:600;font-size:.875rem;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.bp{background:var(--fg);color:var(--bg)}.bg{background:transparent;color:var(--fg);border:1px solid #3f3f46}
+.hero{position:relative;padding:3.5rem 0 4rem;border-bottom:1px solid var(--b);overflow:hidden}
+.hb{position:absolute;inset:0;background:url(https://raw.githubusercontent.com/Terb-13/enve-fuel/main/public/products/hero-lifestyle.jpg) center/cover;opacity:.38}
+.hb:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 5%,rgba(10,10,11,.88) 48%,rgba(10,10,11,.35))}
+.hg{position:relative;display:grid;gap:1.75rem}@media(min-width:900px){.hg{grid-template-columns:1.15fr.85fr;align-items:end}}
+h1{font-size:clamp(2.4rem,7vw,4.1rem);line-height:.95;margin:0}
+.lead{color:var(--m);max-width:26rem;line-height:1.55;font-size:.98rem}
+.ey{font-size:.68rem;font-weight:600;letter-spacing:.2em;color:var(--m);display:flex;align-items:center;gap:.5rem;margin-bottom:.9rem}
+.ey i{width:1.4rem;height:1px;background:var(--r);display:inline-block}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.st{border:1px solid var(--b);background:rgba(10,10,11,.78);padding:.9rem;border-radius:.375rem}
+.st b{font-size:1.7rem;display:block;margin:.35rem 0 .15rem}
+.st span{font-size:.78rem;color:var(--m)}
+.gel{grid-column:1/-1;border-radius:.375rem;overflow:hidden;border:1px solid var(--b)}
+.gel img{width:100%;aspect-ratio:2.35/1;object-fit:cover}
+.trust{display:grid;grid-template-columns:1fr 1fr;background:var(--s);border-bottom:1px solid var(--b)}
+@media(min-width:720px){.trust{grid-template-columns:repeat(4,1fr)}}
+.trust div{padding:.95rem 1.1rem;border-right:1px solid var(--b)}
+.trust strong{display:block;font-size:.88rem}.trust span{font-size:.72rem;color:#71717a}
+section{padding:3rem 0;border-bottom:1px solid var(--b)}
+h2{font-size:clamp(1.55rem,3.8vw,2.05rem);margin:0 0 .4rem}
+.filt{display:flex;flex-wrap:wrap;gap:.45rem;margin:1.15rem 0 1.5rem}
+.filt button{height:2.35rem;padding:0 .85rem;border-radius:.25rem;border:1px solid var(--b);background:0;color:var(--m);font:inherit;font-size:.82rem;font-weight:500;cursor:pointer}
+.filt button.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.grid{display:grid;gap:1.1rem}@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}@media(min-width:960px){.grid{grid-template-columns:1fr 1fr 1fr}}
+.card{border:1px solid var(--b);border-radius:.5rem;overflow:hidden;background:var(--s);display:flex;flex-direction:column}
+.card .ph{aspect-ratio:4/3;background:var(--bg)}.card .ph img{width:100%;height:100%;object-fit:cover}
+.card .bd{padding:.95rem;display:flex;flex-direction:column;flex:1}
+.bdg{display:flex;flex-wrap:wrap;gap:.28rem;margin-bottom:.55rem}
+.bdg span{font-size:.6rem;text-transform:uppercase;letter-spacing:.05em;border:1px solid var(--b);padding:.1rem .38rem;border-radius:.2rem;color:var(--m)}
+.card h3{margin:0;font-size:1.2rem}.card .t{color:var(--m);font-size:.82rem;margin:.28rem 0 0;line-height:1.4}
+.row{margin-top:auto;padding-top:1rem;display:flex;align-items:end;justify-content:space-between;gap:.5rem}
+.price{font-family:ui-monospace,Menlo,monospace;font-size:1rem}
+.drawer{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:50;justify-content:flex-end}
+.drawer.open{display:flex}
+.panel{width:min(100%,23.5rem);background:var(--s);border-left:1px solid var(--b);height:100%;display:flex;flex-direction:column}
+.panel h2{padding:.95rem 1.1rem;border-bottom:1px solid var(--b);margin:0;font-size:1.05rem;display:flex;justify-content:space-between;align-items:center}
+#items{flex:1;overflow:auto;padding:1rem 1.1rem}
+.ci{display:flex;gap:.65rem;padding-bottom:.85rem;margin-bottom:.85rem;border-bottom:1px solid var(--b)}
+.ci img{width:4.1rem;height:4.1rem;object-fit:cover;border-radius:.25rem;border:1px solid var(--b);background:#1a1a1e}
+.foot{padding:1.1rem;border-top:1px solid var(--b)}
+.sci{display:grid;gap:1rem}@media(min-width:800px){.sci{grid-template-columns:1fr 1.35fr}.boxes{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}}
+.box{border:1px solid var(--b);background:var(--bg);padding:.95rem;border-radius:.375rem}
+.box h3{margin:0 0 .3rem;font-size:.98rem}.box p{margin:0;color:var(--m);font-size:.82rem;line-height:1.45}
+footer{background:var(--s);padding:2.25rem 0 1.15rem}.muted{color:var(--m);font-size:.85rem;line-height:1.5}
+.cb{background:0;border:1px solid var(--b);color:var(--fg);height:2.45rem;padding:0 .8rem;border-radius:.25rem;cursor:pointer;font-size:.78rem;font-weight:600}
+</style></head><body>
+<header><div class="w nav">
+<a href="#" style="display:flex;align-items:center;gap:.65rem"><img class="logo" src="https://raw.githubusercontent.com/Terb-13/enve-fuel/main/public/brand/enve-logo-light.jpg" alt="ENVE"/><span class="d" style="font-size:.72rem;color:var(--m);letter-spacing:.16em">Fuel</span></a>
+<nav style="display:flex;gap:.15rem;flex-wrap:wrap"><a class="muted" href="#shop" style="padding:.45rem .65rem">Shop</a><a class="muted" href="#science" style="padding:.45rem .65rem">Science</a><a class="muted" href="https://github.com/Terb-13/enve-fuel" target="_blank" rel="noreferrer" style="padding:.45rem .65rem">GitHub</a></nav>
+<button class="cb" type="button" id="oc">Cart (<span id="c">0</span>)</button></div></header>
+<section class="hero"><div class="hb"></div><div class="w hg">
+<div><div class="ey d"><i></i>Performance nutrition</div>
+<h1 class="d">Fuel<br>engineered<br><span style="color:var(--m)">like carbon.</span></h1>
+<p class="lead">Gels, electrolytes, and chews for riders who race ENVE wheels. Precision carbs. Zero fluff.</p>
+<div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.35rem"><a class="btn bp" href="#shop">Shop ENVE Fuel</a><a class="btn bg" href="#science">See the science</a></div></div>
+<div class="stats"><div class="gel"><img src="https://raw.githubusercontent.com/Terb-13/enve-fuel/main/public/products/gel-30.jpg" alt="ENVE Gel 30"/></div>
+<div class="st"><b class="d">30–50g</b><span>Carb per gel</span></div>
+<div class="st"><b class="d">0g</b><span>Sugar in ENVE Fizz</span></div></div>
+</div></section>
+<div class="trust"><div><strong>Race-day carbs</strong><span>30g & 50g gels</span></div><div><strong>0 sugar fizz</strong><span>B12 + electrolytes</span></div><div><strong>2:1 ratio</strong><span>Glucose : fructose</span></div><div><strong>ENVE standard</strong><span>Tested for the road</span></div></div>
+<section id="shop"><div class="w"><div class="ey d">The lineup</div><h2 class="d">Shop ENVE Fuel</h2><div class="filt" id="f"></div><div class="grid" id="g"></div></div></section>
+<section id="science"><div class="w sci"><div><div class="ey d">Why it works</div><h2 class="d">Fuel science, <span style="color:var(--m)">composite mindset</span></h2><p class="muted">Measured, intentional, race-validated — like carbon layups.</p></div>
+<div class="boxes"><div class="box"><h3 class="d">Dual-source carbs</h3><p>2:1 glucose to fructose for higher rates without GI issues.</p></div>
+<div class="box"><h3 class="d">Caffeine where it counts</h3><p>100mg in Rocket Gel for late-race punches.</p></div>
+<div class="box"><h3 class="d">Zero-sugar hydration</h3><p>Fizz covers B12 and electrolytes with 0g sugar.</p></div>
+<div class="box"><h3 class="d">Packaging that races</h3><p>Matte black graphics, jersey-pocket ready.</p></div></div></div></section>
+<footer><div class="w"><img class="logo" src="https://raw.githubusercontent.com/Terb-13/enve-fuel/main/public/brand/enve-logo-light.jpg" alt="ENVE"/>
+<p class="muted" style="margin-top:.75rem;max-width:22rem">ENVE Fuel — performance nutrition with the same obsession as carbon composites.</p>
+<p class="muted"><a href="https://enve.com" target="_blank" rel="noreferrer">enve.com</a> · <a href="https://github.com/Terb-13/enve-fuel" target="_blank" rel="noreferrer">Source on GitHub</a></p>
+<p class="muted" style="margin-top:1rem;font-size:.72rem;color:#71717a">Free shipping over $100 · Demo storefront · © 2026 ENVE Composites concept</p></div></footer>
+<div class="drawer" id="dr"><div class="panel"><h2 class="d">Cart <button type="button" id="cc" style="background:0;border:0;color:var(--m);cursor:pointer;font-size:1.2rem" aria-label="Close">×</button></h2>
+<div id="items"></div><div class="foot"><div style="display:flex;justify-content:space-between;margin-bottom:.85rem"><span class="muted">Subtotal</span><strong id="sub">$0.00</strong></div>
+<button class="btn bp" style="width:100%" type="button" id="co">Checkout</button></div></div></div>
+<script>
+const IMG="https://raw.githubusercontent.com/Terb-13/enve-fuel/main/public/products/";
+const products=[
+{id:"g30",name:"ENVE Gel 30",tag:"Precision carbohydrate. Race weight packaging.",cat:"gels",price:350,img:IMG+"gel-30.jpg",badges:["30g carb","Original"]},
+{id:"g50",name:"ENVE Rocket Gel",tag:"50g carb. 100mg caffeine.",cat:"gels",price:425,img:IMG+"gel-50.jpg",badges:["50g carb","Caffeine"]},
+{id:"fz",name:"ENVE Fizz",tag:"B12 energy. Zero sugar.",cat:"hydration",price:1299,img:IMG+"fizz-tubes.jpg",badges:["0 sugar","B12"]},
+{id:"cm",name:"ENVE Fizz Combo",tag:"30 tubes. Three flavors.",cat:"hydration",price:3499,img:IMG+"fizz-combo.jpg",badges:["30 tubes","Best value"]},
+{id:"ch",name:"ENVE Energy Chews",tag:"Pink lemonade pocket fuel.",cat:"chews",price:2899,img:IMG+"chews.jpg",badges:["Pink lemonade","Box of 12"]}
+];
+const cats=[{id:"all",label:"All Fuel"},{id:"gels",label:"Gels"},{id:"hydration",label:"Hydration"},{id:"chews",label:"Chews"}];
+let filter="all",cart=JSON.parse(localStorage.getItem("efc")||"[]");
+const money=c=>(c/100).toLocaleString("en-US",{style:"currency",currency:"USD"});
+function save(){localStorage.setItem("efc",JSON.stringify(cart));renderCart()}
+function add(p){const i=cart.find(x=>x.id===p.id);if(i)i.q++;else cart.push({id:p.id,name:p.name,price:p.price,img:p.img,q:1});save();document.getElementById("dr").classList.add("open")}
+function renderFilters(){document.getElementById("f").innerHTML=cats.map(c=>`<button type="button" class="${filter===c.id?"on":""}" data-c="${c.id}">${c.label}</button>`).join("");
+document.querySelectorAll("#f button").forEach(b=>b.onclick=()=>{filter=b.dataset.c;renderFilters();renderGrid()})}
+function renderGrid(){const list=filter==="all"?products:products.filter(p=>p.cat===filter);
+document.getElementById("g").innerHTML=list.map(p=>`<article class="card"><div class="ph"><img src="${p.img}" alt="${p.name}" loading="lazy"/></div><div class="bd"><div class="bdg">${p.badges.map(b=>`<span>${b}</span>`).join("")}</div><h3 class="d">${p.name}</h3><p class="t">${p.tag}</p><div class="row"><span class="price">${money(p.price)}</span><button class="btn bp" type="button" data-id="${p.id}">+ Add</button></div></div></article>`).join("");
+document.querySelectorAll("#g button[data-id]").forEach(b=>b.onclick=()=>add(products.find(p=>p.id===b.dataset.id)))}
+function renderCart(){const n=cart.reduce((a,i)=>a+i.q,0);document.getElementById("c").textContent=n;
+const el=document.getElementById("items");
+if(!cart.length){el.innerHTML='<p class="muted" style="text-align:center;margin-top:2rem">Your cart is empty.</p>';document.getElementById("sub").textContent="$0.00";return}
+el.innerHTML=cart.map((i,idx)=>`<div class="ci"><img src="${i.img}" alt=""/><div style="flex:1"><strong>${i.name}</strong><div class="muted">${money(i.price)}</div><div style="margin-top:.4rem;display:flex;gap:.45rem;align-items:center"><button type="button" data-a="-" data-i="${idx}">−</button><span>${i.q}</span><button type="button" data-a="+" data-i="${idx}">+</button></div></div></div>`).join("");
+el.querySelectorAll("button[data-a]").forEach(b=>b.onclick=()=>{const i=+b.dataset.i;if(b.dataset.a==="+")cart[i].q++;else cart[i].q=Math.max(0,cart[i].q-1);cart=cart.filter(x=>x.q);save()});
+document.getElementById("sub").textContent=money(cart.reduce((a,i)=>a+i.price*i.q,0))}
+document.getElementById("oc").onclick=()=>document.getElementById("dr").classList.add("open");
+document.getElementById("cc").onclick=()=>document.getElementById("dr").classList.remove("open");
+document.getElementById("dr").onclick=e=>{if(e.target.id==="dr")e.currentTarget.classList.remove("open")};
+document.getElementById("co").onclick=()=>{if(!cart.length)return;alert("Order placed — thanks for riding with ENVE Fuel.");cart=[];save();document.getElementById("dr").classList.remove("open")};
+renderFilters();renderGrid();renderCart();
+</script></body></html>
