@@ -1,0 +1,83 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --color-bg: #0a0a0b;
+  --color-surface: #121214;
+  --color-elevated: #1a1a1e;
+  --color-fg: #f4f4f5;
+  --color-muted: #a1a1aa;
+  --color-subtle: #71717a;
+  --color-border: #26262c;
+  --color-border-strong: #3f3f46;
+  --color-accent: #f4f4f5;
+  --color-accent-fg: #0a0a0b;
+  --color-race: #c41230;
+  --color-race-soft: #3a1018;
+
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Barlow Condensed", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  --shadow-soft: 0 12px 40px -16px rgb(0 0 0 / 0.55);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-fg antialiased;
+    font-family: var(--font-sans);
+    min-height: 100dvh;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-fg) 22%, transparent);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .enve-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--color-fg) 4%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--color-fg) 4%, transparent) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .enve-hairline {
+    border-color: color-mix(in oklab, var(--color-fg) 12%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
